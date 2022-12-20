@@ -1,9 +1,11 @@
 from setuptools import setup
 
 setup(
-    name="chat-gpc-cli",
-    description='A natural language command line interface powered by chatgpc',
-    version="0.1",
+    name="chatgpc-cli",
+    description="A natural language command line interface powered by chatgpc",
+    long_description_content_type="text/markdown",
+    long_description=open('README.md').read(),
+    version="0.2",
     dependencies = [ "openai" ],
     include_package_data=True,
     install_requires=["click"],
@@ -11,6 +13,6 @@ setup(
     entry_points="""
         [console_scripts]
         natural=chat_gpci:cli
-    """
+    """,
 )
 
