@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Use python3 to run the script
+python3 "chatgpc.py" "$@"
