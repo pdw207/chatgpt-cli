@@ -3,7 +3,7 @@ ChatGPC Natural language Command Line Interface
 
 ## Quick Setup
 
-1. pip install
+1. Setup virtual environment and install `source .venv/bin/activate && pip install -e .`
 2. Register for an account on OpenAI https://beta.openai.com
 3. Create API key at https://beta.openai.com/account/api-keys'
 4. Add key to shell config so for zshell `echo export OPENAI_API_KEY=NEW_KEY >> ~/.zshrc`
