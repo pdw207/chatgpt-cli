@@ -2,4 +2,4 @@
 
 DIR="$(dirname "$BASH_SOURCE[0]")"
 echo "test"
-python3 "$(dirname "$DIR")/chatgpc.py" "$@"
+python3 "$(dirname "$DIR")/chatgpt.py" "$@"
