@@ -29,3 +29,25 @@ $ docker exec -it foobar bash
 ## Background
 
 Simple cli wrapper for OpenAI's ChatGPT which was created from the Natural Language shell tutorial https://openai.com/blog/openai-api/
+
+Last 15 lines from /Users/paulwilson/Library/Logs/Homebrew/chatgpt/20.pip:
+/opt/homebrew/Cellar/chatgpt/0.2.0/libexec/bin/pip
+install
+-v
+--no-deps
+--no-binary
+:all:
+--use-feature=no-binary-enable-wheel-cache
+--ignore-installed
+/private/tmp/chatgpt-20230505-73454-na7ccp/chatgpt-cli-0.2.0
+
+Using pip 23.0.1 from /opt/homebrew/Cellar/chatgpt/0.2.0/libexec/lib/python3.10/site-packages/pip (python 3.10)
+ERROR: Directory '/private/tmp/chatgpt-20230505-73454-na7ccp/chatgpt-cli-0.2.0' is not installable. Neither 'setup.py' nor 'pyproject.toml' found.
+
+[notice] A new release of pip is available: 23.0.1 -> 23.1.2
+[notice] To update, run: python3.10 -m pip install --upgrade pip
+
+Do not report this issue to Homebrew/brew or Homebrew/homebrew-core!
+
+Error: Your Xcode (14.2) is outdated.
+Please update to Xcode 14.3 (or delete it).

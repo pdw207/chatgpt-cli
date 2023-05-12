@@ -1,11 +1,11 @@
 from setuptools import setup
 
 setup(
-    name="chatgpt-cli",
+    name="bash-chatgpt-cli",
     description="A natural language command line interface powered by chatgpt",
     long_description_content_type="text/markdown",
     long_description=open("README.md").read(),
-    version="0.3",
+    version="0.4",
     include_package_data=True,
     install_requires=["click", "openai"],
     license="MIT",
