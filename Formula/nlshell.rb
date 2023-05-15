@@ -4,10 +4,8 @@ class Nlshell < Formula
   desc "Natural language command-line interface powered by OpenAI's ChatGPT"
   homepage 'https://github.com/pdw207/chatgpt-cli'
   url 'https://github.com/pdw207/chatgpt-cli/releases/download/v0.5.0/nlshell-0.5.tar.gz'
-  sha256 '8e2bd60b9882744be7bff91401aff0e71d31fb435ef1ae58c18e6a94da7e0b36'
+  sha256 'a736b6e177c172eaacdb7b3452d10e6cad22aae238c369323095284b3fcf9822'
   license 'MIT'
-
-  depends_on 'python@3.10'
 
   resource 'certifi' do
     url 'https://files.pythonhosted.org/packages/37/f7/2b1b0ec44fdc30a3d31dfebe52226be9ddc40cd6c0f34ffc8923ba423b69/certifi-2022.12.7.tar.gz'
@@ -48,8 +46,13 @@ class Nlshell < Formula
     virtualenv_install_with_resources
   end
 
-  # test do
-  #   system "#{bin}/nlshell", '--version'
-  #   # assert_match '>>> Run:  ls -la [y/N]:', shell_output("#{bin}/nlshell list files in current directory")
-  # end
+  test do
+    ls_command = "#{bin}/nlshell list files in current directory"
+
+    assert_match(/Create OpenAI key/, shell_output(ls_command))
+
+    ENV['OPENAI_API_KEY'] = 'SECRET'
+
+    assert_match(/invalid_api_key/, shell_output(ls_command))
+  end
 end

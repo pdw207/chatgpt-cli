@@ -12,7 +12,7 @@ def cli(input):
         config_path = "~/.zshrc" if "zsh" in os.getenv("SHELL") else "~/.bashrc"
         click.echo("\nCreate OpenAI key at https://beta.openai.com/account/api-keys")
         click.echo(
-            f"Copy and paste using your key `echo export OPENAI_API_KEY=XXXXXX >> {config_path}` \n"
+            f"Copy and paste using your key `echo export OPENAI_API_KEY=XXXXXX >> {config_path}`\n"
         )
         return
 
@@ -44,16 +44,23 @@ def cli(input):
         "Content-Type": "application/json",
     }
     data = {"prompt": prompt, "max_tokens": 100, "temperature": 0.0, "stop": "\n"}
-    response = requests.post(url, headers=headers, json=data)
 
-    if response.status_code == 200:
-        command = response.json()["choices"][0]["text"]
+    try:
+        response = requests.post(url, headers=headers, json=data)
 
-        if click.confirm(f">>> Run: {click.style(command, 'red')}", default=False):
-            os.system(command)
-    else:
-        click.echo("Request failed with status code:", response.status_code)
-        click.echo("Error message:", response.text)
+        if response.status_code == 200:
+            command = response.json()["choices"][0]["text"]
+
+            if click.confirm(f">>> Run: {click.style(command, 'red')}", default=False):
+                os.system(command)
+        else:
+            click.echo(
+                "Request failed with status code: {}".format(response.status_code)
+            )
+            click.echo("Error: {}".format(response.text))
+
+    except requests.exceptions.RequestException as e:
+        click.echo("An error occurred during the API request: {}".format(str(e)))
 
 
 if __name__ == "__main__":
