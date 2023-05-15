@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import click, os, openai
+import click, os, requests
 
 
 @click.command()
@@ -38,13 +38,22 @@ def cli(input):
 
     prompt += template.format(" ".join(input))
 
-    result = openai.Completion.create(
-        model="davinci", prompt=prompt, stop="\n", max_tokens=100, temperature=0.0
-    )
-    command = result.choices[0]["text"]
+    url = "https://api.openai.com/v1/engines/davinci/completions"
+    headers = {
+        "Authorization": f"Bearer {os.getenv('OPENAI_API_KEY')}",
+        "Content-Type": "application/json",
+    }
+    data = {"prompt": prompt, "max_tokens": 100, "temperature": 0.0, "stop": "\n"}
+    response = requests.post(url, headers=headers, json=data)
 
-    if click.confirm(f">>> Run: {click.style(command, 'red')}", default=False):
-        os.system(command)
+    if response.status_code == 200:
+        command = response.json()["choices"][0]["text"]
+
+        if click.confirm(f">>> Run: {click.style(command, 'red')}", default=False):
+            os.system(command)
+    else:
+        click.echo("Request failed with status code:", response.status_code)
+        click.echo("Error message:", response.text)
 
 
 if __name__ == "__main__":

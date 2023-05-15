@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 DIR="$(dirname "$BASH_SOURCE[0]")"
-python3 "$(dirname "$DIR")/chatgpt.py" "$@"
+python3 "$(dirname "$DIR")/nlshell.py" "$@"
