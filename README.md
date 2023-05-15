@@ -1,31 +1,26 @@
-# ChatGPT-cli
+# Natural language Shell
 
-ChatGPT Natural language Command Line Interface
+Simple Natural language Command Line interface from OpenAI's Blog https://openai.com/blog/openai-api/
 
-## Quick Setup
+## Quickstart
 
-1. Setup virtual environment and install `source .venv/bin/activate && pip install -e .`
-2. Register for an account on OpenAI https://beta.openai.com
-3. Create API key at https://beta.openai.com/account/api-keys'
-4. Add key to shell config so for zshell `echo export OPENAI_API_KEY=NEW_KEY >> ~/.zshrc`
-5. bin/chatgpt PROMPT
+1. `$ brew tap pdw207/nlshell && brew install nlshell`
+2. Create a new secret API key on OpenAI at https://beta.openai.com/account/api-keys
+3. Set environment variable, for zsh `$ echo export OPENAI_API_KEY=NEW_KEY >> ~/.zshrc`
+4. Get started in a new tab. Try `$ nlshell list files in current directory`
 
 ## Example Use Cases
 
 ```
-$ bin/chatgpt git log pretty
+$ nlshell git log pretty
 >>> Run:  git log --pretty=format:"%h %ad | %s%d [%an]" [y/N]: y
 $ git log --pretty=format:"%h %ad | %s%d [%an]"
 
-$  bin/chatgpt set kubernetes namespace
+$  nlshell set kubernetes namespace
 >>> Run:  kubectl config set-context default --namespace=kube-system [y/N] y
 $ kubectl config set-context default --namespace=kube-system
 
-$  bin/chatgpt exec into the docker image called foobar
+$  nlshell exec into the docker image called foobar
 >>> Run:  docker exec -it foobar bash [y/N]: y
 $ docker exec -it foobar bash
 ```
-
-## Background
-
-Simple cli wrapper for OpenAI's ChatGPT which was created from the Natural Language shell tutorial https://openai.com/blog/openai-api/

@@ -7,6 +7,8 @@ class Nlshell < Formula
   sha256 'a736b6e177c172eaacdb7b3452d10e6cad22aae238c369323095284b3fcf9822'
   license 'MIT'
 
+  depends_on 'python@3.11'
+
   resource 'certifi' do
     url 'https://files.pythonhosted.org/packages/37/f7/2b1b0ec44fdc30a3d31dfebe52226be9ddc40cd6c0f34ffc8923ba423b69/certifi-2022.12.7.tar.gz'
     sha256 '35824b4c3a97115964b408844d64aa14db1cc518f6562e8d7261699d1350a9e3'
